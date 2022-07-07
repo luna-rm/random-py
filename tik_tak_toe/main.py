@@ -1,0 +1,168 @@
+import os
+import time
+import sys
+
+end = 0
+player = 1
+INFINITY = 10000
+board = [[0, 0, 0],
+         [0, 0, 0],
+         [0, 0, 0] ]
+
+
+def change_player():
+    global player
+    if(player == 1):
+        player = -1
+    else:
+        player = 1
+
+def load_board():
+    os.system('cls')
+    
+    v_board = [['-','-','-'],
+               ['-','-','-'],
+               ['-','-','-']]
+        
+    for aux_row in range(3):
+        for aux_lane in range(3):
+            if board[aux_row][aux_lane] == 1:
+                v_board[aux_row][aux_lane] = 'X'
+            elif board[aux_row][aux_lane] == -1:
+                v_board[aux_row][aux_lane] = 'O'
+            
+    
+    print(v_board[0][0] + ' ' +  v_board[0][1] + ' ' + v_board[0][2])
+    print(v_board[1][0] + ' ' +  v_board[1][1] + ' ' + v_board[1][2])
+    print(v_board[2][0] + ' ' +  v_board[2][1] + ' ' + v_board[2][2])
+    
+def make_play():
+    row = int(input('row? '))
+    lane = int(input('lane? '))
+
+    if(row < 4 and row > 0):
+        if (lane < 4 and lane > 0):
+            if (board[row-1][lane-1] == 0):
+                board[row-1][lane-1] = player
+                change_player()
+                return
+
+    print('invalid input')            
+    time.sleep(2.0)
+    
+def minimax(board, depth, maximizing):
+    state = verif()
+    
+    if state == 1:
+        return -1
+    elif state == 2:
+        return 1
+    elif state == 3:
+        return 0
+    
+    if maximizing:
+        best_score = -INFINITY
+        best_mov = board
+        
+        for aux1 in range(3):        
+            for aux2 in range(3):    
+                score = -INFINITY
+                if(board[aux1][aux2] == 0):
+                    board[aux1][aux2] = -1
+                    score = minimax(board, 0, False)
+                    
+                    if (score > best_score):
+                        best_score = score
+                    
+                    #board[aux1][aux2] = 0
+                
+        return best_score
+    
+    else:
+        best_score = INFINITY
+        best_mov = board
+        
+        for aux1 in range(3):        
+            for aux2 in range(3):    
+                score = INFINITY
+                if(board[aux1][aux2] == 0):
+                    board[aux1][aux2] = 1
+                    score = minimax(board, 0, True)
+                    
+                    if (score > best_score):
+                        best_score = score
+                    
+                    #board[aux1][aux2] = 0
+    
+        return best_score
+        
+def comp_play():
+    global player
+    global board
+    
+    best_score = INFINITY
+    best_mov_1 = 0
+    best_mov_2 = 0   
+    
+    for aux1 in range(3):        
+        for aux2 in range(3):    
+            score = INFINITY
+            if(board[aux1][aux2] == 0):
+                board[aux1][aux2] = -1
+                score = minimax(board, 0, True)
+                
+                if (score > best_score):
+                    best_score = score
+                    best_mov_1 = aux1
+                    best_mov_2 = aux2
+                    
+                board[aux1][aux2] = 0
+    print('exisad')
+    board[best_mov_1][best_mov_2] = -1
+    player = 1
+    
+def win(p):   
+    load_board()
+    
+    if p == 1:
+        print('\nPlayer X won!')
+    elif p == -1:
+        print('\nPlayer 0 won!') 
+    elif p == 0:
+        print('\nTie!')
+    
+def verif():
+    for aux1 in range(3):
+        aux_win_row = 0
+        aux_win_lane = 0
+        
+        for aux2 in range(3):            
+            aux_win_row += board[aux1][aux2]
+            aux_win_lane += board[aux2][aux1]
+            
+            if (aux_win_row == 3 or aux_win_lane == 3):
+                win(1)
+                return 1
+            elif (aux_win_row == -3 or aux_win_lane == -3):
+                win(-1)
+                return 2
+
+    is_full = True
+    for aux1 in range(3):        
+        for aux2 in range(3): 
+            if board[aux1][aux2] == 0:
+                is_full = False
+    
+    if is_full:
+        win(0)
+        return 3
+            
+    return 0
+
+while end == 0:
+    load_board()
+    if player == 1:
+        make_play()
+    elif player == -1:
+        comp_play()
+    end = verif()
