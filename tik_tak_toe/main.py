@@ -18,7 +18,7 @@ def change_player():
         player = 1
 
 def load_board():
-    os.system('cls')
+    #os.system('cls')
     
     v_board = [['-','-','-'],
                ['-','-','-'],
@@ -50,55 +50,55 @@ def make_play():
     print('invalid input')            
     time.sleep(2.0)
     
-def minimax(board, depth, maximizing):
+def minimax(v_board, depth, maximizing):
     state = verif()
     
     if state == 1:
+        print('aaaaa')
         return -1
     elif state == 2:
+        print('bbbbbbb')
         return 1
     elif state == 3:
+        print('ccc')
         return 0
     
     if maximizing:
         best_score = -INFINITY
-        best_mov = board
-        
+        #score = -INFINITY
+
         for aux1 in range(3):        
             for aux2 in range(3):    
-                score = -INFINITY
-                if(board[aux1][aux2] == 0):
-                    board[aux1][aux2] = -1
-                    score = minimax(board, 0, False)
-                    
+                if(v_board[aux1][aux2] == 0):
+                    v_board[aux1][aux2] = -1
+                    score = minimax(v_board, 0, False)
+                    v_board[aux1][aux2] = 0
+
                     if (score > best_score):
                         best_score = score
-                    
-                    #board[aux1][aux2] = 0
-                
+                      
         return best_score
     
     else:
         best_score = INFINITY
-        best_mov = board
-        
+        #score = INFINITY
+
         for aux1 in range(3):        
             for aux2 in range(3):    
-                score = INFINITY
-                if(board[aux1][aux2] == 0):
-                    board[aux1][aux2] = 1
-                    score = minimax(board, 0, True)
-                    
+                if(v_board[aux1][aux2] == 0):
+                    v_board[aux1][aux2] = 1
+                    score = minimax(v_board, 0, True)
+                    v_board[aux1][aux2] = 0
+
                     if (score > best_score):
                         best_score = score
-                    
-                    #board[aux1][aux2] = 0
-    
+            
         return best_score
         
 def comp_play():
     global player
-    global board
+   
+    v_board = board
     
     best_score = INFINITY
     best_mov_1 = 0
@@ -107,16 +107,16 @@ def comp_play():
     for aux1 in range(3):        
         for aux2 in range(3):    
             score = INFINITY
-            if(board[aux1][aux2] == 0):
-                board[aux1][aux2] = -1
-                score = minimax(board, 0, True)
+            if(v_board[aux1][aux2] == 0):
+                v_board[aux1][aux2] = 1
+                score = minimax(v_board, 0, True)
                 
                 if (score > best_score):
                     best_score = score
                     best_mov_1 = aux1
                     best_mov_2 = aux2
                     
-                board[aux1][aux2] = 0
+                v_board[aux1][aux2] = 0
     print('exisad')
     board[best_mov_1][best_mov_2] = -1
     player = 1
@@ -159,10 +159,13 @@ def verif():
             
     return 0
 
-while end == 0:
+""" while end == 0:
     load_board()
     if player == 1:
         make_play()
     elif player == -1:
         comp_play()
-    end = verif()
+    end = verif() """
+    
+load_board()
+comp_play()
