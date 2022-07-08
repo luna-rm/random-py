@@ -49,34 +49,18 @@ def minimax(v_board, depth, maximizing):
     
     if state == 1:
         #print('aaaaa')
-        return -1
+        return 1
     elif state == 2:
         #print('bbbbbbb')
-        return 1
+        return -1
     elif state == 3:
         #print('ccc')
         return 0
     
     
     if maximizing:
-        best_score = INFINITY
-        #score = -INFINITY
-
-        for aux1 in range(3):        
-            for aux2 in range(3):    
-                if(v_board[aux1][aux2] == 0):
-                    v_board[aux1][aux2] = -1
-                    score = minimax(v_board, 0, True)
-                    v_board[aux1][aux2] = 0
-
-                    if (score < best_score):
-                        best_score = score
-                
-        return best_score
-        
-    else:
         best_score = -INFINITY
-        #score = INFINITY
+        #score = -INFINITY
 
         for aux1 in range(3):        
             for aux2 in range(3):    
@@ -90,8 +74,25 @@ def minimax(v_board, depth, maximizing):
                 
         return best_score
         
+    else:
+        best_score = INFINITY
+        #score = INFINITY
+
+        for aux1 in range(3):        
+            for aux2 in range(3):    
+                if(v_board[aux1][aux2] == 0):
+                    v_board[aux1][aux2] = -1
+                    score = minimax(v_board, 0, True)
+                    v_board[aux1][aux2] = 0
+
+                    if (score < best_score):
+                        best_score = score
+                
+        return best_score
+        
 def comp_play():
     global player
+    global board
    
     v_board = board
     
