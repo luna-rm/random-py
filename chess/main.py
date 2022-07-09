@@ -1,4 +1,4 @@
-import unit
+from Unit import Unit
 import os
 
 board = [
@@ -24,14 +24,16 @@ def load_board():
 
 def create_units():
     
-    #space = unit(0)
-    pawn = unit.unit(1)
+    space = Unit(0)
+    pawn = Unit(1)
     
-    for aux1 in range(8):
-        for aux2 in range(8):
-            board[aux1][aux2] = pawn
+    for aux0_1 in range(8):
+        for aux0_2 in range(8):
+            board[aux0_1][aux0_2] = space
             
-    #for aux in range(8):
+    for aux1 in range(8):
+        board[1][aux1] = pawn
+        board[6][aux1] = pawn
 
 #call
 create_units()
