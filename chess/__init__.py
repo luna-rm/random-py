@@ -1,5 +1,8 @@
-from Unit import Unit
+from units.pawn import Pawn
 import os
+
+class Space:
+    type = 0
 
 board = [
     [ 0, 0, 0, 0, 0, 0, 0, 0 ],
@@ -24,16 +27,13 @@ def load_board():
 
 def create_units():
     
-    space = Unit(0)
-    pawn = Unit(1)
-    
     for aux0_1 in range(8):
         for aux0_2 in range(8):
-            board[aux0_1][aux0_2] = space
+            board[aux0_1][aux0_2] = Space()
             
     for aux1 in range(8):
-        board[1][aux1] = pawn
-        board[6][aux1] = pawn
+        board[1][aux1] = Pawn()
+        board[6][aux1] = Pawn()
 
 #call
 create_units()
