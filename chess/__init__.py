@@ -32,8 +32,8 @@ def create_units():
             board[aux0_1][aux0_2] = Space()
             
     for aux1 in range(8):
-        board[1][aux1] = Pawn()
-        board[6][aux1] = Pawn()
+        board[1][aux1] = Pawn(1,True)
+        board[6][aux1] = Pawn(1,False)
 
 #call
 create_units()
