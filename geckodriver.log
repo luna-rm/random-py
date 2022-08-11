@@ -1,0 +1,10 @@
+1659979770939	geckodriver	INFO	Listening on 127.0.0.1:61851
+1659979774017	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "61852" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\peema\\AppData\\Local\\Temp\\rust_mozprofile0ECyTC"
+1659979775561	Marionette	INFO	Marionette enabled
+1659979775579	Marionette	INFO	Listening on port 61869
+Read port: 61869
+WebDriver BiDi listening on ws://localhost:61852
+1659979776013	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\peema\\AppData\\Local\\Temp\\rust_mozprofile0ECyTC\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:61852/devtools/browser/5bc0ffc4-974f-4a92-a2bf-bd524e52ac3a
+JavaScript warning: https://pagead2.googlesyndication.com/bg/7_ytIEpYWpd7XN7KxgxvHAG9q-1MjoUA1EpcWWHxRKk.js line 2 > eval line 4653 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.

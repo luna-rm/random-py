@@ -272,3 +272,27 @@ console.warn: SearchSettings: "get: No settings file exists, new profile?" (new 
 DevTools listening on ws://localhost:50241/devtools/browser/de4c2e9f-cc34-4174-8bc0-db382f932536
 JavaScript warning: https://pagead2.googlesyndication.com/bg/zRsni2KaYpGlbzf8qPigYhDu91QLoFuK7JLW1IaqgGI.js line 2 > eval line 2754 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
 JavaScript error: , line 0: NS_ERROR_NOT_AVAILABLE
+1659979860265	geckodriver	INFO	Listening on 127.0.0.1:61972
+1659979863320	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "61973" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\peema\\AppData\\Local\\Temp\\rust_mozprofileZZMjru"
+1659979864230	Marionette	INFO	Marionette enabled
+1659979864245	Marionette	INFO	Listening on port 61988
+WebDriver BiDi listening on ws://localhost:61973
+Read port: 61988
+1659979864541	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\peema\\AppData\\Local\\Temp\\rust_mozprofileZZMjru\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:61973/devtools/browser/171fb91b-6c02-44b1-ba76-fa2ff28d538a
+JavaScript warning: https://pagead2.googlesyndication.com/bg/7_ytIEpYWpd7XN7KxgxvHAG9q-1MjoUA1EpcWWHxRKk.js line 2 > eval line 2630 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+1659980095058	Marionette	INFO	Stopped listening on port 61988
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+1659980161440	geckodriver	INFO	Listening on 127.0.0.1:62122
+1659980164488	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "62123" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\peema\\AppData\\Local\\Temp\\rust_mozprofileQXYt0L"
+1659980165297	Marionette	INFO	Marionette enabled
+1659980165307	Marionette	INFO	Listening on port 62135
+WebDriver BiDi listening on ws://localhost:62123
+Read port: 62135
+1659980165545	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\peema\\AppData\\Local\\Temp\\rust_mozprofileQXYt0L\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:62123/devtools/browser/21b9ce3b-23a3-4409-9f1c-c291751a8cea
+JavaScript warning: https://pagead2.googlesyndication.com/bg/7_ytIEpYWpd7XN7KxgxvHAG9q-1MjoUA1EpcWWHxRKk.js line 2 > eval line 3785 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+1659980226114	Marionette	INFO	Stopped listening on port 62135
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
