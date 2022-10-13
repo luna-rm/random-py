@@ -64,14 +64,31 @@ def alt_get_num():
         else:
             while True:
                 kg = False
-                dig = random.randint(1,9)
+                aux_choice = [0,1,2,3,4,5,6,7,8,9]
+                if aux_dig == 0:
+                    aux_choice.remove(0)
+
+                if answ[aux_dig] != -1:
+                    aux_choice.remove(answ[aux_dig])
+                    
+                for aux_rem in range(5):
+                    if ansg[aux_rem] != -1:
+                        try:
+                            aux_choice.remove(ansg[aux_rem])
+                        except:
+                            pass
+                print(aux_choice)
+                
+                dig = random.choice(aux_choice)
+                print(dig)
+                #dig = random.randint(1,9)
                 if dig != answ[aux_dig]:
                     for aux_ansg in range(5):
                         if (ansg[aux_ansg] == dig):
                             kg = True
                 if not kg:        
                     number[aux_dig] = dig
-                    print(aux_dig)
+                    #print(aux_dig)
                     break
             
     num = str(number[0]) + str(number[1]) + str(number[2]) + str(number[3]) + str(number[4])
