@@ -9,7 +9,7 @@ from keras.models import load_model
 WIDTH = 500
 HEIGHT = 500
 SIZE = 10
-MODEL = load_model('./other_saved_model.h5')
+MODEL = load_model('./saved_model.h5')
 
 def stop():
     global aux_close 
@@ -26,7 +26,7 @@ def predict():
         save_as_png()
         img = cv.imread('img.png', 0)
         
-        final_img = cv.resize(img, (28, 28))
+        final_img = cv.resize(img, (48, 48))
         final_img = np.expand_dims(final_img, axis=0)      
             
         final_img = final_img/255.0
@@ -35,8 +35,8 @@ def predict():
             
         os.remove('img.png')
         os.remove('img.eps')
-    except Exception:
-        print('error')
+    except Exception as e:
+        print(e)
 
 def paint(event):
     x1, y1 = (event.x - SIZE//2), (event.y - SIZE//2)
