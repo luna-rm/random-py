@@ -1,60 +1,64 @@
-import pyautogui as pg
-import pyperclip as pc
-import time
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from pyshadow.main import Shadow
 import os
+import time
+import random
 import pandas as pd
 
-pg.PAUSE = 2
-
+word = 'areio';
+ansr = [-1,-1,-1,-1,-1]
+answ = [-1,-1,-1,-1,-1]
+ansg = [-1,-1,-1,-1,-1]
+aux = 0
+                                                    
 def get_list():
-    list = []
-    df = pd.read_excel('words.xlsx')
-    df = df.sample(frac = 1)
-    base = df.values
+    table = pd.read_excel('words.xlsx')
+    table = table.sample(frac = 1)
+    list = table.values
     
-    for word in base:
+    for word in list:
         word = word[0].split('/')
-        if len(word[0]) == 5:
-            list.append(word[0])
+        word = word[0]
         
-    return list
-
-def new_list(list):
-    pass
-
-def do():
-    list = get_list()
-    word = 'areio'
-    for _ in range(5):
-        pg.write(word)
-        pg.press('enter')
+        if word.leght != 5:
+            pass
         
-        time.sleep(1)
-        
-        for _ in range(5):
-            pg.press('backspace')
+        print(word)
+                                                    
+def change_rules(aux_main, w):
+    for aux_cr in range(5):
+        ele = shadow.find_element("div#hold>wc-row[termo-row='"+str(aux_main)+"']>div[lid='"+str(aux_cr)+"']").get_attribute('class')
+        print(ele)
+        if 'right' in ele:
+            ansr[aux_cr] = w[aux_cr]
+            print(ansr)
+        if 'place' in ele:
+            answ[aux_cr] = w[aux_cr]
+            print(answ)
+        if 'wrong' in ele:
+            ansg[aux_cr] = w[aux_cr]
+            print(ansg)
 
-        time.sleep(5)
-        
-        list = new_list(list)
+#calc()
 
-def start():
-    pg.press('win')
-    pg.write('opera')
-    pg.press('enter')
-    pg.hotkey('ctrl','shift','n')
-    pc.copy('https://term.ooo')
-    pg.hotkey('ctrl','v')
-    pg.press('enter')
-    time.sleep(5)
-    pg.click(x=1146, y=215) 
+os.system('cls')
+print('run')
 
-    do()
+nav = webdriver.Firefox()
+shadow = Shadow(nav)
+""" nav.get('https://term.ooo')
 
-def get_position():
-    os.system('cls')
-    time.sleep(5)
-    print(pg.position())
+nav.find_element('xpath', '/html/body/wc-modal/div').click()
+
+for aux_main in range(6):
     
-start()
-#get_position() 
+    nav.find_element('xpath', '/html/body').send_keys(word)
+    nav.find_element('xpath', '/html/body').send_keys(Keys.ENTER)
+    time.sleep(5);
+    change_rules(aux_main, word);  """
+get_list();
+
+        
+
+

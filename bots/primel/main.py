@@ -180,7 +180,12 @@ nav.get('https://converged.yt/primel/')
 for aux_main in range(6):
     click(str(next_num))
     change_rules(aux_main+1, next_num)
-    alt_get_num()
+    try:
+        alt_get_num()
+    except:
+        next_num = 56783
+    
+    
     
     
 alt_get_num()
