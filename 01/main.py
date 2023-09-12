@@ -129,7 +129,7 @@ for i in range(len(aux_table)):
         if aux_table[i][j-(2**i)] == 0:
             aux_table[i][j] = 1 
             
-table = {}#A'.(BxC)
+table = {}
 
 for i in range(num_var[0]):
     table[num_var[1][i]] = aux_table[i]
